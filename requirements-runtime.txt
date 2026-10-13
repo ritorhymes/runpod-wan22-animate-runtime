@@ -27,3 +27,5 @@ matplotlib==3.10.1
 moviepy==1.0.3
 dashscope==1.22.0
 scipy==1.15.3
+# Official wan/__init__.py imports Speech-to-Video even in Animate mode.
+librosa==0.10.2.post1
