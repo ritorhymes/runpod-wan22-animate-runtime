@@ -13,7 +13,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONPATH=/opt/wan2.2
 RUN test -f /start.sh || (echo "RunPod SSH/Jupyter startup script missing from chosen image" >&2; exit 2)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-      git ca-certificates curl ffmpeg libgomp1 libglib2.0-0 \
+      git ca-certificates curl ffmpeg libgomp1 libglib2.0-0 libcairo2-dev pkg-config \
     && rm -rf /var/lib/apt/lists/*
 COPY requirements-runtime.txt /opt/wan22/requirements-runtime.txt
 RUN python3 -m pip install --no-cache-dir -r /opt/wan22/requirements-runtime.txt \
@@ -29,12 +29,13 @@ RUN git clone --filter=blob:none --no-checkout https://github.com/Wan-Video/Wan2
     && rm -rf /opt/wan2.2/.git
 COPY model-manifest.json /opt/wan22/model-manifest.json
 COPY scripts/runtime.py /opt/wan22/scripts/runtime.py
+COPY scripts/verify-deps.py /opt/wan22/scripts/verify-deps.py
 COPY scripts/wan22-runtime /opt/wan22/scripts/wan22-runtime
 RUN chmod 755 /opt/wan22/scripts/wan22-runtime /opt/wan22/scripts/runtime.py \
     && ln -s /opt/wan22/scripts/wan22-runtime /usr/local/bin/wan22-runtime \
     && python3 -m compileall -q /opt/wan22/scripts \
     && wan22-runtime smoke \
     && wan22-runtime plan \
-    && python3 -m pip check
+    && python3 /opt/wan22/scripts/verify-deps.py
 WORKDIR /workspace
 # DO NOT override ENTRYPOINT or CMD. Inherit RunPod's SSH and Jupyter startup.
