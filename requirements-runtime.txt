@@ -6,7 +6,7 @@ transformers==4.51.3
 tokenizers==0.21.4
 diffusers==0.35.1
 accelerate==1.5.2
-peft==0.15.2
+peft==0.17.1
 huggingface_hub[hf_xet]==0.35.3
 safetensors==0.6.2
 sentencepiece==0.2.1
