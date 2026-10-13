@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Public runtime installed inside the prebuilt RunPod GHCR image.
+set -euo pipefail
+exec python3 /opt/wan22/scripts/runtime.py "$@"

@@ -1,0 +1,2083 @@
+{
+  "schema_version": 1,
+  "repo_id": "Wan-AI/Wan2.2-Animate-14B",
+  "revision": "cb93a225fbaf1ca100f54e79da8f994995b689b3",
+  "source": "Official Wan-AI/Wan2.2-Animate-14B pinned snapshot from public Hugging Face model tree",
+  "generation_files": [
+    {
+      "path": "Wan2.1_VAE.pth",
+      "size": 507609928,
+      "sha256": "acf6c5aa49ad281d4b561e10656e2397c446a8ba4b8d8f19d3dd125c2628bc6a"
+    },
+    {
+      "path": "config.json",
+      "size": 565,
+      "sha256": null
+    },
+    {
+      "path": "configuration.json",
+      "size": 43,
+      "sha256": null
+    },
+    {
+      "path": "diffusion_pytorch_model-00001-of-00004.safetensors",
+      "size": 9875257880,
+      "sha256": "575c2dba750c3b40240fb742a4224453aa97dfbd3c5f5a0086be431cdefdd69c"
+    },
+    {
+      "path": "diffusion_pytorch_model-00002-of-00004.safetensors",
+      "size": 9975378288,
+      "sha256": "b90b820627d43eeeb1ae0489182f9a8c870374fd72cc99dccb9eddfc2ace8325"
+    },
+    {
+      "path": "diffusion_pytorch_model-00003-of-00004.safetensors",
+      "size": 9954400528,
+      "sha256": "e2aa343b0ba04f563566e9959a439611a18189cd9accdc04d59681be9ce5be50"
+    },
+    {
+      "path": "diffusion_pytorch_model-00004-of-00004.safetensors",
+      "size": 4744748472,
+      "sha256": "e5fea7f38aa4cb70ed59a9ecf406d0c05f3dfc85ee70bc83de35679c42642d1b"
+    },
+    {
+      "path": "diffusion_pytorch_model.safetensors.index.json",
+      "size": 130839,
+      "sha256": null
+    },
+    {
+      "path": "google/umt5-xxl/special_tokens_map.json",
+      "size": 6623,
+      "sha256": null
+    },
+    {
+      "path": "google/umt5-xxl/spiece.model",
+      "size": 4548313,
+      "sha256": "e3909a67b780650b35cf529ac782ad2b6b26e6d1f849d3fbb6a872905f452458"
+    },
+    {
+      "path": "google/umt5-xxl/tokenizer.json",
+      "size": 16837417,
+      "sha256": "6e197b4d3dbd71da14b4eb255f4fa91c9c1f2068b20a2de2472967ca3d22602b"
+    },
+    {
+      "path": "google/umt5-xxl/tokenizer_config.json",
+      "size": 61728,
+      "sha256": null
+    },
+    {
+      "path": "models_clip_open-clip-xlm-roberta-large-vit-huge-14.pth",
+      "size": 4772359047,
+      "sha256": "628c9998b613391f193eb67ff68da9667d75f492911e4eb3decf23460a158c38"
+    },
+    {
+      "path": "models_t5_umt5-xxl-enc-bf16.pth",
+      "size": 11361920418,
+      "sha256": "7cace0da2b446bbbbc57d031ab6cf163a3d59b366da94e5afe36745b746fd81d"
+    },
+    {
+      "path": "relighting_lora.ckpt",
+      "size": 2873429974,
+      "sha256": "49fe0a5a5af97c3f410598ddb146b5f4b3f30b2a526ec8cc32e9f032a1d328f7"
+    },
+    {
+      "path": "xlm-roberta-large/config.json",
+      "size": 616,
+      "sha256": null
+    },
+    {
+      "path": "xlm-roberta-large/configuration.json",
+      "size": 67,
+      "sha256": null
+    },
+    {
+      "path": "xlm-roberta-large/sentencepiece.bpe.model",
+      "size": 5069051,
+      "sha256": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865"
+    },
+    {
+      "path": "xlm-roberta-large/tokenizer.json",
+      "size": 9096718,
+      "sha256": null
+    }
+  ],
+  "preprocess_files": [
+    {
+      "path": "process_checkpoint/det/yolov10m.onnx",
+      "size": 61659339,
+      "sha256": "89b526498a6d55f869a6ab52e3a2eb20ad45b3711c1f7de3dd9ca0b399dfd6d7"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.0.attn.proj.bias",
+      "size": 5120,
+      "sha256": "86e2df5d69994214a76bb5aaeac31af7e80f56356194ba2ce368a033ad50cff0"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.0.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "a16185bbd5bfb32c23966439d4907b48c5c6627ce56806311d0cff42e253af3f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.0.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "f548ad077d287135e9efeca9bafaa0236624b65109da1f2d8dd7480b2c5da1a7"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.0.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "bddc7cae8f10846fa89befd8ce45c4ed0e8027c2a8188c18207c2eb17356a150"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.0.norm1.bias",
+      "size": 5120,
+      "sha256": "8c717b837fd1c6ad45ed959841e6c6c4a0b5e3d3b2db9387802d1ca8f193ba77"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.0.norm1.weight",
+      "size": 5120,
+      "sha256": "286c4da43a7051511b608e99cd35d1ebe65f822c155c0e71952862ab60a50c71"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.0.norm2.bias",
+      "size": 5120,
+      "sha256": "78061c55352795f10264da43f82a55f2c26168f30131a2f651d262ffd45f105d"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.0.norm2.weight",
+      "size": 5120,
+      "sha256": "31c7cb9137da3b2ea4c49d3478c17b98d29fbc17a1236f4767252af919b2e12e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.1.attn.proj.bias",
+      "size": 5120,
+      "sha256": "a779875008e8d7a71595667b53ebedff3552433d6777ea0a245520cc19013e6f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.1.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "02699a6c8c6bc2b2a2715e1b9f70dae36827afe74d31fc344f064ed8e45e96fc"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.1.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "9f4d121da1fc1e46fa7c3838b654dcf126e6e16fc312446711a1bda18433dfe5"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.1.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "82cbfc6142c46eba73f41aa633423c52c43a9398cb6403f10dd61f397c8df36f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.1.norm1.bias",
+      "size": 5120,
+      "sha256": "c04002561b8a38ae047ce84f140157a42d90cd837c7fb2f60e826c100cac44ca"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.1.norm1.weight",
+      "size": 5120,
+      "sha256": "22cedb98464fe151f65d1c6b1f1d4281cd9d04c7dbba16398a7619233f6696e0"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.1.norm2.bias",
+      "size": 5120,
+      "sha256": "5891575b7a787389eeda80b4cdb258f2a2b9840da1f3c9289e699555afd119f6"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.1.norm2.weight",
+      "size": 5120,
+      "sha256": "56c57a4bdb9120da3616bed7c36491be84f03020f1b9ff221923b05e260e392b"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.10.attn.proj.bias",
+      "size": 5120,
+      "sha256": "f2edad46c377a041d11f8fd3b9f93cd2276db6d8cf90df2a55cc110ce44a628e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.10.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "c88fdcb27945ebe9dd6caa1f7fd96192624c78b0bc0a09e82b66a70eb3d0b42c"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.10.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "c966ee17f5fab7bda7cce6234c18eaf20ac93a89f17658bcbfc6c42ff31e0283"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.10.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "7af32a4bd1e07ed7785f51a77ddb5b6ee44cde09d0b1b0d2aae44a8209ec2eab"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.10.norm1.bias",
+      "size": 5120,
+      "sha256": "efbd00d57f4946aa030afcf66848122cfbf700f12df05c700fddb82c2a1b8246"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.10.norm1.weight",
+      "size": 5120,
+      "sha256": "3f07c67387f4f1d406339e671dcc07d3e77b9cb75bf92e842358624eb7bb00b6"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.10.norm2.bias",
+      "size": 5120,
+      "sha256": "16fe494f69c70215f4e6a1487330ec7c4ff1cd00b4697986412efec83d3b233a"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.10.norm2.weight",
+      "size": 5120,
+      "sha256": "2f92a41ca6f285a1e7e141f38fec8c0227a0f74a9b62b13625a87d88285fead2"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.11.attn.proj.bias",
+      "size": 5120,
+      "sha256": "e8549c10452288368db34d2a04a9d5b241012f2d8f95f3b4f66a0f61966aed4f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.11.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "2c026f30b2de7dfa50fec306002b28a7a283414b64ed67f2f3b0089fd9034ac0"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.11.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "c9c93c447ddbda3f96f6d3d143e5bf2b43ff2f016578731e276984b72f22ba79"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.11.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "d7f8140ff364b36e823b41147e127595847c5342418988c2434539e4ab3862ca"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.11.norm1.bias",
+      "size": 5120,
+      "sha256": "d3026d4decedd6f1e05d252157b39c5978c8ead046289c54a3cf90a84e24f465"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.11.norm1.weight",
+      "size": 5120,
+      "sha256": "83e8980a54d302bad1dd17948cf2a7244a32c7d07415d60185c30fed018ed8ba"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.11.norm2.bias",
+      "size": 5120,
+      "sha256": "2cc71be38e3858ce9fe68d173d763daa44b45dc1275a136f7d743bf6d56fc769"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.11.norm2.weight",
+      "size": 5120,
+      "sha256": "4f42adcd714cef8424652176eacc66196dcbd9e49a090de7df6a014f800652fc"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.12.attn.proj.bias",
+      "size": 5120,
+      "sha256": "66be121e370a37d73a5c80b0a9c5e43e933646d2e17298d5df8cfb84cb53fadc"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.12.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "386aa0b8918fd8874211d9365b60188468192dd3bb1b0097dfb29674f8c4618d"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.12.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "0d4f7448e8f0ba39d6ab624ddb7f6f289ba8f75a01c16a09918e1a579ec649b7"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.12.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "fe3ac46914dfaad393d805810fd2231f5ea9d0ce04ce0ced40de6a82ae79337f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.12.norm1.bias",
+      "size": 5120,
+      "sha256": "bb32ef8b6cae60573057ab4647429af610d489c9d293905de6d3e1a46794cfd8"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.12.norm1.weight",
+      "size": 5120,
+      "sha256": "9942925ad0ec0f364d6845938f3dd46cf9144ec87bc96182db2c141a2e6c76c4"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.12.norm2.bias",
+      "size": 5120,
+      "sha256": "f1a9b1b38c826eef73ed30131782b6167c3b8fe13d28192cae5b7ae01144d178"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.12.norm2.weight",
+      "size": 5120,
+      "sha256": "d389ab55908de2b1ccae77e6044f69bd3c13a08ed82dc1390f4b4ce02440352b"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.13.attn.proj.bias",
+      "size": 5120,
+      "sha256": "938f76abb71bf84f1cc5a51dda01a09becc87ca24ed08f8ac5f591d5b04779a4"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.13.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "93b90c4bf3db816883bafff64aeff38ab862e6f3e3c8bc8e4b8bace9b4c68ad4"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.13.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "1c1b3d036b273c6fde0b59b7f7ec5c30e034a0fce9fa4bb8ce72d6dd93ad249c"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.13.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "1dd3ee511fae9aa45e9bc67fafbb8cd2fd24186a2db118bb8dae94072f68b2e4"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.13.norm1.bias",
+      "size": 5120,
+      "sha256": "1a6cd007fdc90f61853beee70667f4143f5ecc60bac198c4c2d4f86f82f16282"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.13.norm1.weight",
+      "size": 5120,
+      "sha256": "c64f55f77d76ff48a1fb2838d03be125c89cc365c7e3eb603cd1f0676e22b39c"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.13.norm2.bias",
+      "size": 5120,
+      "sha256": "9a0da345fca9a88162bff7138a5096108cb7cdf20011dbb97fbfd3573ee2b762"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.13.norm2.weight",
+      "size": 5120,
+      "sha256": "88085e63aaf17fdab994cd5e746ebb1b8bd7c476738bc37924413f98ac7aee5b"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.14.attn.proj.bias",
+      "size": 5120,
+      "sha256": "0dee79119240cedb4def4dfd6db2fbed1ae3f8132bf82d451234b387fa7818ce"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.14.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "d16c8ea538d2682426056369c00ba3a0f0746610ffacdb6968ff08beca007513"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.14.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "fc2eaaf6a112b9434fb9d322cc0ca1be5f0ce20e6a61a55e1bc5a79fb79cf706"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.14.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "045bc48077a166deed8544ffa8d085ec9a1c1121b9ddf36619acba577c7e2218"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.14.norm1.bias",
+      "size": 5120,
+      "sha256": "2a7fb409a2f563317a83b685e21805584abf17779416bcc0b1e349b3f50460a0"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.14.norm1.weight",
+      "size": 5120,
+      "sha256": "00fc56f17eb81676b270945a68ad056b07193498db0ec57828adf4ee2f7ca602"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.14.norm2.bias",
+      "size": 5120,
+      "sha256": "33977c20fabbf18e4b9473da2927f0c8c548320449ba2b18271b277453f47454"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.14.norm2.weight",
+      "size": 5120,
+      "sha256": "b5b164ea54848225aee890259b2ed79f523546d73cfdbb7a37c356bdce23d172"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.15.attn.proj.bias",
+      "size": 5120,
+      "sha256": "19376b921e612bd20e69153df62f07befcb6ba55e9c98c9bcc1f6d922b50a2fc"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.15.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "3eb6ed72edf0c85a6ea1e7340a3e4e73c3bba3cf00ef52cec5e9e74e9522f432"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.15.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "e6a1811190f24d5c0b356e66126e550b1a0de2e9a460394dcdfd867ad352a008"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.15.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "3a93521e775bfeba0ed083eb4f4e56affc12189bf223ec9f4c2d4d9db59bf95c"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.15.norm1.bias",
+      "size": 5120,
+      "sha256": "e087b3ad9842ef02e0a2f810ff6e98cd449128ef89ad10eca42542e482e52243"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.15.norm1.weight",
+      "size": 5120,
+      "sha256": "af56780bcee590f727a2bd6c3e5bb360e4d1fa5030e2db7deb4f410396599cf5"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.15.norm2.bias",
+      "size": 5120,
+      "sha256": "94ffc9aaf92620c84716571b9b6294f04670da0d5f10413297d00281a501d967"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.15.norm2.weight",
+      "size": 5120,
+      "sha256": "eb177523ade038a171a01c6e73c9bbdf580ced2cc74f39d349564993a2547c7b"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.16.attn.proj.bias",
+      "size": 5120,
+      "sha256": "11288121dca2591e1de3f3e002dbf6735dfc6367959b6c59b72da94e2be0319b"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.16.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "90fad51cf8d03c503dc0da2d2c490d66b7cfb509391c8e4d633af36b550ce27e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.16.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "149a003be2f6378aa9d42fe80fadfe260d21dc784ca3dc3b2d5cc22ecbdbeff2"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.16.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "e6e4a005736e0ba510febd4d0d6c614eeaff670a42e41942296eb50f9631a0f6"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.16.norm1.bias",
+      "size": 5120,
+      "sha256": "1b0ceeb0abb5735631be3950a122e1a1be4fac5c28e3d708901c2da52fc12410"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.16.norm1.weight",
+      "size": 5120,
+      "sha256": "66fc08a4519f8c92652fd324131912363bdd25a2f30a0cde82e3e25d0a2cf676"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.16.norm2.bias",
+      "size": 5120,
+      "sha256": "58d44c8c116a3497739f3996211a83ba87c55714528f28540609a063e4f4ff0d"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.16.norm2.weight",
+      "size": 5120,
+      "sha256": "7b7e6bddda6eb4d700e9f33098f2b209cf4b11e7ec8436b8e545b2c68176b4d5"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.17.attn.proj.bias",
+      "size": 5120,
+      "sha256": "b4c5e8bfa9b97eab945ca9fd3dfc8e2799dac11ea8b4afb532cfa62cffadf9b0"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.17.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "2c3efded1020179018745d312dd6e467c0197a10083a75d093469edc7bd9f3af"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.17.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "ffa847a78d4242ae5b374134cdba7a52da37e2ba7392844d9fb57d2914c71963"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.17.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "cbddc36a4905f29144f134ef73959fcf123977e682c11561ecbafacb910c3b52"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.17.norm1.bias",
+      "size": 5120,
+      "sha256": "01331449927b87ab35124f311e71eaf66a26fc9a821e19e4937f1d86eadd14d3"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.17.norm1.weight",
+      "size": 5120,
+      "sha256": "7b39ed5b076f34f90ca1aeb798e1869c56566577856c7ec15f40730b2d74b459"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.17.norm2.bias",
+      "size": 5120,
+      "sha256": "17330f14f69ff9f76ebceab96368d2251bcf9e8d78104f2909198b4e5e1b4a2a"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.17.norm2.weight",
+      "size": 5120,
+      "sha256": "89378ce12583f7fa99cd0204bcab1052ffc64efcfe8ee681326eaec31aeb0873"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.18.attn.proj.bias",
+      "size": 5120,
+      "sha256": "096286065cce5223b87fa76ba13d9cce674820fa9d216a87dc5e45deb154994a"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.18.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "55ce29fffaf8b18fde277d144a4ff142853fb8c0adbe7b59469c67ddd10ed826"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.18.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "e3cccb7eb2f0c0ae3aec0fc3ff3eb55209dc874ed16735915db1e3aeebb353e3"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.18.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "2df07c054110450a6181632935215371cfd23a524ffb0146ab2e844bef0db0c8"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.18.norm1.bias",
+      "size": 5120,
+      "sha256": "26a90652eb968c9a18d4ee0bf27ccf7da6d1f93ad737caab6a0337caf1c68e56"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.18.norm1.weight",
+      "size": 5120,
+      "sha256": "01f6224fb4ccf729dc7bd896dab6a2d7866a9853c062dfc1c13146bbedeb3e2b"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.18.norm2.bias",
+      "size": 5120,
+      "sha256": "60fcd2323bc6c3a81da198cde4d87a17e367a4b8407345b6b6f61e4cff3e709c"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.18.norm2.weight",
+      "size": 5120,
+      "sha256": "cae367457b01b134634cafa8adc5aba5a4c6a9925560ffba2dca31e4c9246d2a"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.19.attn.proj.bias",
+      "size": 5120,
+      "sha256": "385f13c50ea3d1b1fbd676f54355629b2aff758fe1bb6840c6501050de3c388d"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.19.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "0b9cb2bf4ddecf808c5275341733baa64e89727037c125da6a13e34bd3c5e33f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.19.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "be835c318270ec9fc76e84ed8ec7b048ce8aac45b83443fb8273822e82b042fd"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.19.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "ad8542b572edfb4b0e5c09b90b864665b0f9212534162425ffd20588634eba02"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.19.norm1.bias",
+      "size": 5120,
+      "sha256": "eb4e1341d214a1e7132e7edeba45497ce36905b3792d4fffcef657714968e091"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.19.norm1.weight",
+      "size": 5120,
+      "sha256": "33d659d27de9822f037f6fd9e62b50604bc4352033fd9ac2661ca64fac296388"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.19.norm2.bias",
+      "size": 5120,
+      "sha256": "908af43410ac44a012dfae0ba54f4c612ecbdc7949dfd7a7bf27b0d7185fb202"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.19.norm2.weight",
+      "size": 5120,
+      "sha256": "396e665091a18c57bcc19e378135a9420c5c82056cd9f0431faf1f1210f3baa8"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.2.attn.proj.bias",
+      "size": 5120,
+      "sha256": "e8c1a7f7333f02e610fd7c699e45d6c07353bce42d5e27aafdf1316278a62984"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.2.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "5d74e8eea038e789abe53bd3da907627f264de7ea209cc8aa1fb8c3d058be413"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.2.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "211938af081ece4b8b3b3d3cf5a9d4dba931fa73b47de1de31510d34a7e092a6"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.2.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "96a507d55701a7db49b5dde03be2ada396f170716f8bc01836b20910eb33a08e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.2.norm1.bias",
+      "size": 5120,
+      "sha256": "57dbcd322fc8116400e1813d512efa79f39bf8d0198bb9d007782782e62e54d3"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.2.norm1.weight",
+      "size": 5120,
+      "sha256": "372e90acc4f00071bc6d4b9e7f834c4a266266a62fd559f4adfe593fdc2a6d31"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.2.norm2.bias",
+      "size": 5120,
+      "sha256": "636b9951d33ed63055bbdb21dcbc764017bc35b815924d851e14821c50dbc335"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.2.norm2.weight",
+      "size": 5120,
+      "sha256": "88b2838a0c22aecb07b9cea5409d1d390e59cb04dd929b9846b6ad30099c6285"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.20.attn.proj.bias",
+      "size": 5120,
+      "sha256": "380966de796cabe9d7b16a9ed64756a385cdae41207a4213fc68cfac40050fc6"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.20.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "ad82413f7ce748b20b2bec2435f0de6c47e05c52616f964c59e764fbc5261254"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.20.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "03ef0e7bd352d08a4c3c703421d28bf983e21e36ce4f486b260b4ba900c46ab7"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.20.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "9eabe61ef86223eceb851c47448a60b35714b4a7990aac7f8e015166ee521610"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.20.norm1.bias",
+      "size": 5120,
+      "sha256": "b6adb64bdc090101d034e3e12438f9fb7b570fc44f195bf2278fd42a29432336"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.20.norm1.weight",
+      "size": 5120,
+      "sha256": "bd5e5f94723dd322a8e18d6890049d213376334d8c62effc74bad38c1c806916"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.20.norm2.bias",
+      "size": 5120,
+      "sha256": "2ea826425dd47c114355e1fe17296f9813ec618100bf954bb77bf8f704d0a43c"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.20.norm2.weight",
+      "size": 5120,
+      "sha256": "d770b8bae654f588dc68793c5940e233cd3214bba165d65cdf509b0288ba3d0e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.21.attn.proj.bias",
+      "size": 5120,
+      "sha256": "3ead317142edf781b704542c024df182e5aa45cab709d569dbf860976dba6854"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.21.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "bb0b9baceead0b3e73a5225bc55753c3e2a9b2f1d459717a4f780ab364f3da76"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.21.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "d53e1ddc88180650fef062aa47e77d9743e0e9d4a6ed270c6c4d90b363a798ec"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.21.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "392a6a0e25e9875c248d18cc6c57fb4d5bdf4400c16dd727d255205b3c9353ce"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.21.norm1.bias",
+      "size": 5120,
+      "sha256": "f9a4e62df63e88d629146956bfbd9472be145eeef7f77653d6cb86595a0db032"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.21.norm1.weight",
+      "size": 5120,
+      "sha256": "0b78e3bae29368dd991579b5d10e68b1a2348fde4a086ca94bb430955698b55f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.21.norm2.bias",
+      "size": 5120,
+      "sha256": "7056dbf5cc70a98127401b71a989cd1d6d7a3b63d7b1847cd793b99bae573fdd"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.21.norm2.weight",
+      "size": 5120,
+      "sha256": "68c6c4fb1c50ca85356e885e5b06137c119341eeee683c16de49ba123e0d9d29"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.22.attn.proj.bias",
+      "size": 5120,
+      "sha256": "604c343cf3293ceded77e5ef1fc12c61fb4cffff2b3cecae048ca3e641bb9f3d"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.22.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "61d2adee76c052e4a11f663983c34f9527f5eb2aa7ad35a4d2b7fa06448fee74"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.22.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "b2b80f52374c351101577c21e9da6ee266aaf0764957b64573c5b12d4cbbed24"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.22.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "155b9e005e860cb5ebe551f3728df71dd0da780712bc199dabf65c5a07b20f57"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.22.norm1.bias",
+      "size": 5120,
+      "sha256": "9747c2951e50dab20018b71567de425d746e1a573522af9c5f91732575e1286b"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.22.norm1.weight",
+      "size": 5120,
+      "sha256": "2bd456be78f01a840fd4297ee1be72a210665f5b5040773547607f2ce6fcad00"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.22.norm2.bias",
+      "size": 5120,
+      "sha256": "a8bc2622b82d6d52cb3772f644224323442561fd0a5eef7a5d06ad468b82ef8a"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.22.norm2.weight",
+      "size": 5120,
+      "sha256": "2f1fad98fd42f217637791c5ced36f5fea89b3cd5ff5ec15b1f29f52ff6e709d"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.23.attn.proj.bias",
+      "size": 5120,
+      "sha256": "eca890881e5a49218a83d0c07d7c37f0abedd686d62763bec2ac2ffd05b2bd1e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.23.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "31e890ab2bd43adf2a6655c515afc01eb84e6ee814a97a093f98d0f4de58189e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.23.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "2b844f288fc60de235bd2890abdb0bb939ff3a61dc1188aff853befca47e1cbc"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.23.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "de084705bfc8710c68ceb004b208449470f7b56f15024c16a7aabb1880ea124c"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.23.norm1.bias",
+      "size": 5120,
+      "sha256": "3d5c1f26c7634fbb28e6c966dfa4ba39218e68d27889fae5bdfec38671c75178"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.23.norm1.weight",
+      "size": 5120,
+      "sha256": "2a633cf3a86bbbf8a1207bb62d916404c7c73d53f3660f33a4b333074bdeea78"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.23.norm2.bias",
+      "size": 5120,
+      "sha256": "88c96213232ca13079bfbf5b8a3b41d6cf3b8fd8709ecef297f1fb85a74dd187"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.23.norm2.weight",
+      "size": 5120,
+      "sha256": "ece851b97cb4bb521d58b56a6f627f9d7a358ae8df459a83012ed06e7f4abf08"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.24.attn.proj.bias",
+      "size": 5120,
+      "sha256": "ef7e4a556633227427ea98dcef7cd0f9fd8466cdc31861ed7745060c28bb2bf6"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.24.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "2c835b4682c3f62d9c31243049e180219f040a362efc7363572e06456a188c2d"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.24.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "f3faf3121ff7a0d28ca25784f9d819c6c89114b917ab3c75b3e7b013dee3ff62"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.24.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "7baf684bdb245d586d9623ae7361b6639debfeb21e384ef6ea288afe06e33359"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.24.norm1.bias",
+      "size": 5120,
+      "sha256": "ada6df3785a30c677a7dc3d67f5d424ec4ae1c9a42e080b74769308146894a94"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.24.norm1.weight",
+      "size": 5120,
+      "sha256": "5e080366e570c88652fae81221b3e620a7d012783424134f94eba6c439876946"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.24.norm2.bias",
+      "size": 5120,
+      "sha256": "ca4aca0ec1e38d92bee00cb226476a2df782d9356e12efa672fdaed14bfdb10b"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.24.norm2.weight",
+      "size": 5120,
+      "sha256": "d196a9ff19c142773064eb04427f286a2d0e20e318ac75a7a113f07a60565a46"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.25.attn.proj.bias",
+      "size": 5120,
+      "sha256": "8a37c5320913b269873ef7c54464695050b32676cddab5b347e727591143559a"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.25.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "65c3309352470c1d1fe06c0dccea931822ac1c84469a6a94e97de25dfafee020"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.25.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "260d36c4873ac1677afec8526a564ce6638fa9d7343167ca4341d9b4f7d149f8"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.25.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "5bc004c13087fa921879a9d65fceb11aa12949df03961b18acb4859263b38fb5"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.25.norm1.bias",
+      "size": 5120,
+      "sha256": "7a39ad70926e37c588d95c4e9b13ac8d99a5695545302b6098210461954f0bf5"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.25.norm1.weight",
+      "size": 5120,
+      "sha256": "3c4398b4677d587713deaa9234c0e75168687a675f953e6941b76c9ce533a7bb"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.25.norm2.bias",
+      "size": 5120,
+      "sha256": "569102e68107e627be69c16e72b4713a1c576beec316367e7e35c6215ee06cad"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.25.norm2.weight",
+      "size": 5120,
+      "sha256": "92a771437990ed23d7bee94418e68d7d5c0ab308cc2529b31679d257424284bb"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.26.attn.proj.bias",
+      "size": 5120,
+      "sha256": "8b14ae0e3d48464891ce9c75cf51b92375c54664b037788817232e19651bce38"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.26.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "4b7dc60d42e5141dcf0c87564fe1bf35c2c0ad5af15955e0103cb4838a52e5ee"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.26.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "236d0caef467d95d70cd357f652df3ef1df9551fd20e7b14efc570f3da837bda"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.26.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "c930704748dd06a956667d1b8942cf4c439a239608ad4974deb84377903dcd1a"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.26.norm1.bias",
+      "size": 5120,
+      "sha256": "413e2569555716341dd0974076161456ba881a204ea0140204b557d8135bcb10"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.26.norm1.weight",
+      "size": 5120,
+      "sha256": "b84aa04561570c3202aa17177ff541416f654cef1609e685ee84f89dd49984b5"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.26.norm2.bias",
+      "size": 5120,
+      "sha256": "da7f00a39e4e1ef0e9cd6184f95ef007668d18dfb6a4fc684dc8f7b3845096bd"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.26.norm2.weight",
+      "size": 5120,
+      "sha256": "fa522b9b077285c4a6a6ddb3a5cc744d899b5f54506364ef4875220f8f7c462f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.27.attn.proj.bias",
+      "size": 5120,
+      "sha256": "8de62e2bee39de93a637c9c02ef286cd638a85ea4db4a19c9702f9bc0c5cda9e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.27.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "20a2a5f4431016f25ea1ca1b39353264179a5116de598364488936cf27853e6c"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.27.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "3ef52f6bd493abda17cbf4b6ed7369f08e65587c8f6c31f6bdd0924548a0430d"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.27.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "8e0aeb58f7bd05bb2ebfeb72f181baf177f152a903725fc9fcc1f68251123aca"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.27.norm1.bias",
+      "size": 5120,
+      "sha256": "9af9c5667bc7c55fbd922d3f9295a9cb6570a418fc5708f6638f8662f877859a"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.27.norm1.weight",
+      "size": 5120,
+      "sha256": "f214fda0db4aa66e54c03efd0318013f8ca1d48cb48deea7990cf68ff426871f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.27.norm2.bias",
+      "size": 5120,
+      "sha256": "81d9776d0a8dfed496d9d64c97449c3661bb50310f4967bc8978e1af552a5fd4"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.27.norm2.weight",
+      "size": 5120,
+      "sha256": "919b14ba58aab8d4daf0dfcad2819dba813c98f9c42361152a205f712c19435a"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.28.attn.proj.bias",
+      "size": 5120,
+      "sha256": "74d41999f98a84155f6bb62e6cb6fa89a2aed3164c2e97dbc88f6eba667f00af"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.28.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "dac28af634ea9324726d9a3b18686ae9a6e7dc97c0d13204dc77bd70cb371a2a"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.28.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "5a9e582046ba52a211aa7854d3aa708ae3491b0a3cdb28c21c1e24ec7c14846b"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.28.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "e518da2a9de119d5e620da7bfb06f942d6bada422b64d79f801cb2486917136d"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.28.norm1.bias",
+      "size": 5120,
+      "sha256": "d8be6f3720368ea0385cd9c96c01ffcc42cf93019baea1022ea21efac47e131a"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.28.norm1.weight",
+      "size": 5120,
+      "sha256": "2c1c7d8ee862c8ef69501bbec65a1681ad713c88d200e268e52a97128a14045e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.28.norm2.bias",
+      "size": 5120,
+      "sha256": "ba648a49d655d6b103fe9b51ad87f6473c900276cb7e806fa4a4925e7a616fa8"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.28.norm2.weight",
+      "size": 5120,
+      "sha256": "7bdaec2497c5722264488e7d5d99c1593dc8b06795111a6bf6ec25220a3324c8"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.29.attn.proj.bias",
+      "size": 5120,
+      "sha256": "04336d30c4d93c83c2579eaa496a4f0b9d0c5a3f1099652b04545af00ac79f50"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.29.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "e324a5172b6bc91f9ff89a8e31f68aa0b9575950d41bc2eb401d63c028d21fc2"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.29.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "b8011cd32b4b089a28afa94b3ec1d00322f7a4f3126db1f4cafb1d6ef0ddbf5e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.29.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "481a81c40bd517d78487245614f011c3f31a98a6abc24a44e534fd5b36582677"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.29.norm1.bias",
+      "size": 5120,
+      "sha256": "2576116477a05c61e2be137e6db69e9039e383f2e83f84ef72e402733a96e70a"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.29.norm1.weight",
+      "size": 5120,
+      "sha256": "0160e3e8502fc0b138bbd2221ff0619244f8c32b986b650e099bf21138e5d33b"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.29.norm2.bias",
+      "size": 5120,
+      "sha256": "ebaf38099bee7e3fc85ffd64d7b62b8635ec074d254613769527fb61614eec7e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.29.norm2.weight",
+      "size": 5120,
+      "sha256": "a3e0b4d7f729f9d20c4b5b989037c7d0e82f53b54b058b376329368566ea3b61"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.3.attn.proj.bias",
+      "size": 5120,
+      "sha256": "22dcec321e9a2d2c8b2b6af0f70712e361a56837177b7790cb8db9e1afba76d0"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.3.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "5595398a364d76fdf1f7bf8431c4b0caca13ed664fbc02a1a16e5653ec76d29b"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.3.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "55a0e64dd4abb78c999f7bc335de8c648ddacd1ab6cfc86a65e68629a86b350f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.3.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "66debf3b404e58c581592f033ab111eedc404e1b9a2108c319dc661c3f9e33bb"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.3.norm1.bias",
+      "size": 5120,
+      "sha256": "25ba9c4bfb3a8208e47205724b1b99e226b993575ddc27adba683562f894fb95"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.3.norm1.weight",
+      "size": 5120,
+      "sha256": "b635d3a5595181af9cbdcf9211ebadd713116155f3cd8257d26aeb1b2abdd81c"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.3.norm2.bias",
+      "size": 5120,
+      "sha256": "0d90922e13dd30bd3540bb58fc7c3180adff6b84fdedad3319c8623b5f87e18e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.3.norm2.weight",
+      "size": 5120,
+      "sha256": "11624874782d8f8ab9e264bfae73d6ed60166f8e8e46da27fcaaa9ae6e76de96"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.30.attn.proj.bias",
+      "size": 5120,
+      "sha256": "c2054b15a9127fc0600bd5e9ef2c1456a50eff10895916292af10ae25ff3804e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.30.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "d7936b6b881fa3852a94c8a7d397aa0844ab6f22a9e8c8f8e401b673af2b2f15"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.30.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "c094b77dd6005a4e65181b4fd1b01d8c635229f0d7ee13ac276fe3b61d4fd481"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.30.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "a3a7cb4aa1eac8c53d3a3c503d9948e4e8d4924cfe2ba250e5b6b0ac04aa64e4"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.30.norm1.bias",
+      "size": 5120,
+      "sha256": "b99c5ea64682fd6e810b99a68e5ce701f738be85bc659b0da4c401466438637b"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.30.norm1.weight",
+      "size": 5120,
+      "sha256": "47360bf63b2e422faa342b1a00695882146d8d1f9646a2a38764a9e1b7477706"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.30.norm2.bias",
+      "size": 5120,
+      "sha256": "390d52d0fc2e3eb474b42493eab7e5cfcf359894b9f2491a51496af15faad963"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.30.norm2.weight",
+      "size": 5120,
+      "sha256": "ac8f2d7700763d1617edba6dfd19e47c92c0a0cefd0a9ecef61d8382dcf362ab"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.31.attn.proj.bias",
+      "size": 5120,
+      "sha256": "dc4b924f55f45bf789c1ab8e98c554f5031b2a8e20637c662d8b916b921f9322"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.31.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "9afb7def45bd249bff00c81efac0d64331d5fe10dea1a45a14ee08c23bfa2744"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.31.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "a67de692af18c187d18722efb3b0f3b6d71590c695c65422033e88bd4d287ed8"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.31.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "7ec1ba9460f0e4f9547ddd1f8ba4f25d22d21cea39c07aac7cdeb0551cfc5725"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.31.norm1.bias",
+      "size": 5120,
+      "sha256": "9112c22f6f82ebbad64fd8858cf20ba790fa39b1590f92ef18247d6afdc953a4"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.31.norm1.weight",
+      "size": 5120,
+      "sha256": "eea7c095053ca400530f626e06a9746ca95eb2885dba198715165c56692b434b"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.31.norm2.bias",
+      "size": 5120,
+      "sha256": "ca9ef59c81407b2e9abc15a368cf637df0907d122fcc05e28f9830ba074d3ef7"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.31.norm2.weight",
+      "size": 5120,
+      "sha256": "1967dea24c7d730e04ca446bc2af1223838d0647d1f6f9248e537a4ff8b419ee"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.4.attn.proj.bias",
+      "size": 5120,
+      "sha256": "90571a94e848c65f38c52b403d89b41fcbf111583551963bf431c817eaaac1d3"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.4.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "19042a71a7d4a27d63351b8cfe9bf301feb268d8dea773040bbe60737012a307"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.4.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "95b47a980ca540ceded83b23f648b8f95cc2acf47c6d1309a2e0717ea99c3178"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.4.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "1149be2f291b26cd9f30946639a0e2c9ffe9fe50c72e44ceb665bf8a8c78c6d9"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.4.norm1.bias",
+      "size": 5120,
+      "sha256": "0c534b86945d90d3b343761bbe7c6f9662b1ffadd9cd24a3cbd3f9043d776d97"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.4.norm1.weight",
+      "size": 5120,
+      "sha256": "e222a2c747837804c102bad862cff9c8cf43072d30ac02952db542930b312a3e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.4.norm2.bias",
+      "size": 5120,
+      "sha256": "3e8b31efaa423f268e3ae031973904d949d5e9e47e736813d005844f653c4e00"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.4.norm2.weight",
+      "size": 5120,
+      "sha256": "0bedc65cbb56f68fba2af07ba18bc1c7051ba2efc105293a0c01325d5f3bacb0"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.5.attn.proj.bias",
+      "size": 5120,
+      "sha256": "0294c809b5951aba3d6cab37edd8776fd256c3186439ca70b12579098fb81996"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.5.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "f45131efc307c0eb583929c16c0920225f06a7213dfe4a3b1d96e2901fd8c84f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.5.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "e01093aff4758fd7faa200ac155d32226bb94594f949ebfec267e336d6ca4172"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.5.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "e903626f683763c0f7afb442aabb34579b66bb31cbbb685c5e2ec7c728c51252"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.5.norm1.bias",
+      "size": 5120,
+      "sha256": "e8e02c13205b055dc51f3c5604299f7936c515b032126ce30ae734a6b45b7d96"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.5.norm1.weight",
+      "size": 5120,
+      "sha256": "d82e0c3403e310472fb8a10f1b0b5054a00c48ce15ce695c2d1879b3ed9bcd12"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.5.norm2.bias",
+      "size": 5120,
+      "sha256": "f6b1f4458f336fd4a443c7d82a810e82ce16882798e34f6b73f07ec42cbe36cb"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.5.norm2.weight",
+      "size": 5120,
+      "sha256": "e44d9a00f11d7124e71ce6c74afe0613426c876bab6c88d2bbf585780bed30a6"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.6.attn.proj.bias",
+      "size": 5120,
+      "sha256": "c07e430c0cba946b86a45d5633bf2d1819dd2170b70b2dfa9f1a8068a489a27d"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.6.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "919d17a2111bae5a52937df6bf414b6aa0c786711f26e7d704d4945179a1641f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.6.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "84609b32710a4d697003f297c774d2703f1ab37099fe6ab6267db0643971ffaa"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.6.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "95c906e0f046eb8e2652f5d27d383425c42aa47e6528368b3c5a5c47bea1d730"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.6.norm1.bias",
+      "size": 5120,
+      "sha256": "ca57abe54c2a341d5f10644f3672255cdbe301288062528518a033329d2e761d"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.6.norm1.weight",
+      "size": 5120,
+      "sha256": "99bce57fe208d7ef251f5d401db16039f2ceb28b1a97f92fad32c138a2279a86"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.6.norm2.bias",
+      "size": 5120,
+      "sha256": "76bc113c4d4cd1383626ec35aa6ca0822f84e906360d733ad87af9ab0532d2a0"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.6.norm2.weight",
+      "size": 5120,
+      "sha256": "6d5aef3194433befb0fee2f0c56f7ad8ea3089802ccd3ec2ecb6432dfa799416"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.7.attn.proj.bias",
+      "size": 5120,
+      "sha256": "0383dcc7e102f0d438a023f839d791de95a7a239b77368d1fc008098a5bdd416"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.7.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "ed6ab90155b2e830314e2e842015de4c95f5b717865bdeddabc828c4cf761d7c"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.7.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "208399cf204179bb3cc5cf430a6b7d0782a77a5c025edba2f78061c84ffc39d5"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.7.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "6610fe60ae92fbb91ba8cd75d9c77e978fd0a259e8cbc9901f7fe53f506f8c59"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.7.norm1.bias",
+      "size": 5120,
+      "sha256": "802041a2a2f948c255b4e7d5cd074ca552d44a1dff41d7552d971d5c3783abd1"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.7.norm1.weight",
+      "size": 5120,
+      "sha256": "02c9d27a0f9abf2503a63d8a7b31a69045987bae4045869123d38cfb9fb62f70"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.7.norm2.bias",
+      "size": 5120,
+      "sha256": "a8a09620192c89d87352d147095091284a17f38969c174933ee27f0da38c52d4"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.7.norm2.weight",
+      "size": 5120,
+      "sha256": "dcf7f004fab14d4a183737e77d4a170a7524877e924557cda56dfc8d0ad7cfa9"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.8.attn.proj.bias",
+      "size": 5120,
+      "sha256": "de16da43aacd58fc80cc9400a31e2815245e756fc0d5496192fc475f5ab38980"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.8.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "3c9768094b37445e444ec8449548b877377763c794674142e4da6ee77592b288"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.8.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "e2ff5f8d067fd1870529a703a75177148bb83e28c33e8a84b2b968e49796b6fc"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.8.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "e9f2e8a063b35bb3ddde1ced15dd48aa0820039c4edb8364f235d6b913c046dc"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.8.norm1.bias",
+      "size": 5120,
+      "sha256": "d10092099c71f39e5ad6285d9b257866bcc2a7498e19be816c9c5790860d1766"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.8.norm1.weight",
+      "size": 5120,
+      "sha256": "c7d08279b954e5a1739bbfeed2f9ca3e78eb038c0c66878f73d58496eb0534d1"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.8.norm2.bias",
+      "size": 5120,
+      "sha256": "a905acbb3a4619015dfaa6302074aa64deb5fdea0aeb1108744af0cd914cd591"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.8.norm2.weight",
+      "size": 5120,
+      "sha256": "ed2f20cdc555f61142db5d56a335894b0dfd778e9e82d932c9ba7bebe244a1b5"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.9.attn.proj.bias",
+      "size": 5120,
+      "sha256": "7b6a0e1dbe837401fc86c41bbc3e0cf161110e500615858849bc54cd3739116e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.9.attn.qkv.bias",
+      "size": 15360,
+      "sha256": "dbb71ccaf5df320f7ed3d52e7a002e82edff9e5d6f2cb447a90ecee5edbbe01e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.9.mlp.fc1.bias",
+      "size": 20480,
+      "sha256": "22b270111430295dc2f7eac78a32cc57bb206354e5edc575265a1971367006c1"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.9.mlp.fc2.bias",
+      "size": 5120,
+      "sha256": "54901dd0a357e8edddc3cbbac611dd0d8f2f24a89fde4a3502e50acdf855e03b"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.9.norm1.bias",
+      "size": 5120,
+      "sha256": "01007b9c981209f64019195510e815ef449cc16c1cd696751e50bd0f6f846ee5"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.9.norm1.weight",
+      "size": 5120,
+      "sha256": "7a7aab93c019e1c22e19a3d57d9cb6a904abdbae0cc86e4c552fc7fae6ccf1ab"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.9.norm2.bias",
+      "size": 5120,
+      "sha256": "d4ee985489448caabc4580855856c3b64ec6491fe602a481655412f758327a1b"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.blocks.9.norm2.weight",
+      "size": 5120,
+      "sha256": "dbcb804ef4cc502f1d48587cfcffdcdc7bd2ba794c5cb7957125709c01981d46"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.last_norm.bias",
+      "size": 5120,
+      "sha256": "1c2203c4cea5db75418b868ab8eda6214bac34067732a636fcfce90b01c94178"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.last_norm.weight",
+      "size": 5120,
+      "sha256": "7358b2f5d0742bd92c97f227346c8db6574423f4c6bcb73d0dc1d5505fe1af73"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.patch_embed.proj.bias",
+      "size": 5120,
+      "sha256": "748babefab5296a298da1383c5d1b9b3fd8303c4ad99442b7fdd256e5a25548d"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/backbone.patch_embed.proj.weight",
+      "size": 3932160,
+      "sha256": "53f9cb8032616283cbae402a0c48c5b92cd1391afede6e25b02ddb03bd9e8dc1"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/end2end.onnx",
+      "size": 412883,
+      "sha256": "e5dab9693f9fb437516955c42040ebb13664e66ca49ee7b619dde4a9972fa3e4"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/keypoint_head.deconv_layers.0.weight",
+      "size": 20971520,
+      "sha256": "c146d511f36866a0b994c2e06b9aebdf271df8a582f2568aa633fc501bb3aa0e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/keypoint_head.deconv_layers.3.weight",
+      "size": 4194304,
+      "sha256": "8fe8ff2891f7b5cb9a05de35c3ce8bef3976c506dee03803573f0fd5f0825448"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/keypoint_head.final_layer.weight",
+      "size": 136192,
+      "sha256": "f25a26b14432888bbe9a445b67ba4c6576ae4306382a8eb656ec222e3a40b56e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__Add_2802",
+      "size": 983040,
+      "sha256": "6a0f32eeab6cdbb8c49d119bc22164717ba26741443a134e299d50ae312b8187"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__Add_2803",
+      "size": 5120,
+      "sha256": "c4dfe4187e533d57961d73d7576e126000dce7f1681bb4733436834c5baf3322"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2804",
+      "size": 19660800,
+      "sha256": "218bf2dd6a2fa4f54b80b18fcca53b481ea7399799896f88266f32b43010d4f7"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2809",
+      "size": 6553600,
+      "sha256": "07b8062de251cfc0596b34238fb6c01fd4b0425d54efeb5ee7d9bcfdbdafcba5"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2810",
+      "size": 26214400,
+      "sha256": "e428f19ddc9398e8ca6314f9406a7b89ca77843537aab995bf48c074b007d4d5"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2811",
+      "size": 26214400,
+      "sha256": "8d26a86bc2675f3e813091afdea18d43c9d91d88717d6f17a090b6ad5c1c6bf8"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2812",
+      "size": 19660800,
+      "sha256": "7069894eadb9bc08b317aced6dc6bdba6cedde1fa93b84bcf9cc0c1d8cc8a0f2"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2817",
+      "size": 6553600,
+      "sha256": "a46adbe57df91d08ca6ac08a3e47cbae0d62b7059a908e09e65709fca853dc3a"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2818",
+      "size": 26214400,
+      "sha256": "f415a51263516a34c17071214fea60ec3efe1cdbef7698f5ccfa24205c383a80"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2819",
+      "size": 26214400,
+      "sha256": "fa0ec5cbc305ee88481707ba2267dc78dedebfb4f610163862366d782f692fe2"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2820",
+      "size": 19660800,
+      "sha256": "ed86d9b53d6fbd268fda9c90dcf3fc86d29f55e0a78edbfbc5e67898ac265284"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2825",
+      "size": 6553600,
+      "sha256": "9628a7ba4dd0b06ffc84a0add9a56f4292f2bde928425ce71bc42b4d6ee3afa3"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2826",
+      "size": 26214400,
+      "sha256": "9413d3921054a70163bfa53c3e7af5164b5645fb64f50ea91117d71ffe16ae2e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2827",
+      "size": 26214400,
+      "sha256": "df645b6056cb697bf2c1dac1f8c608e7ec174c3f6f3829461a16f84e1af0142e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2828",
+      "size": 19660800,
+      "sha256": "288ff57672707698eef85fe9d241f33c275dd6d00f1e4217d174063fee764118"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2833",
+      "size": 6553600,
+      "sha256": "ba39cbd3774627baa83f19430c5f03c03fa74ce3f23ecde01810e36c4956eca5"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2834",
+      "size": 26214400,
+      "sha256": "c7d11c33f631a7c7924f6e5c6fc84e5af2ba68387eee532dc84e5a515098a523"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2835",
+      "size": 26214400,
+      "sha256": "19af1314a957631689438800478b9740cca9ebfedc58d1eedac5a7bd853c86a7"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2836",
+      "size": 19660800,
+      "sha256": "49d2879c0cc6eaa7804c72a6c8af1fd34bf1d152faa3e10aaadc5646247b0501"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2841",
+      "size": 6553600,
+      "sha256": "7771ab0082961c6feccfbb2d1ee4678dc71e422e501cdd21921ac24736165c1b"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2842",
+      "size": 26214400,
+      "sha256": "c2eefd2567cfbe4fb43a99d5bf5d28aa401a8e32379526b5759b1ff743ee036e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2843",
+      "size": 26214400,
+      "sha256": "a4b62534ac8b0975af9adf4bbd87ac570d0bed28cafda3caa529923ab802fe8d"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2844",
+      "size": 19660800,
+      "sha256": "dff0f1cd7461a99825f051af68ad9c1fe88ce864c5136b496f292d6c410772bf"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2849",
+      "size": 6553600,
+      "sha256": "d2e4a80e33b226ab9a726e05562ad7c581819556af49789369e3112ef93eff01"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2850",
+      "size": 26214400,
+      "sha256": "75ef2a714c9305155c4d95e78ebe0bd0b684c6dcf3a729b3a344477237d3abf4"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2851",
+      "size": 26214400,
+      "sha256": "321d17d53437345f10211cd0ec41b194654fa95b55ed475d48466e8cfaba4020"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2852",
+      "size": 19660800,
+      "sha256": "d124a0f53abe634d30db7c947bf455d435f23fd25f37a704a3b2fbc8e9b60939"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2857",
+      "size": 6553600,
+      "sha256": "0af49e2c12c8470df02cd69c555971a8a89da9a9f99d03fe08ad630d3d15f45d"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2858",
+      "size": 26214400,
+      "sha256": "c2836676a27a92a1ce7b0d247b1587fe1cadf60299065139165d9cf65252b06f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2859",
+      "size": 26214400,
+      "sha256": "d214bb4402f54eca4e180952fa816dfafddaa598141aa311875eecd014031a15"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2860",
+      "size": 19660800,
+      "sha256": "ddaf1147861ba07640f961b48e8a18494304740c0fe89bbd56e14130801e6126"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2865",
+      "size": 6553600,
+      "sha256": "45a344ed63485e70b7f08a5b196fe95a12ef6aad8b2707eb0cb2a11f06d7bdd1"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2866",
+      "size": 26214400,
+      "sha256": "60ec196a8d8eb7a5d7791a36c6923513fc573d3899bd9c15051148c094733318"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2867",
+      "size": 26214400,
+      "sha256": "177152cae1bfc7e00411acd81a89ac6b2be2463eb0e49266398dad76cea48c02"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2868",
+      "size": 19660800,
+      "sha256": "41b88080b2ccca05ef963cc5e6fdbe17d7a839151cff3172585832ddc78c70a1"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2873",
+      "size": 6553600,
+      "sha256": "cf8e3b99982816ddde3fe4c53a5265a81ecc282291acf8fc12d83377570fb405"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2874",
+      "size": 26214400,
+      "sha256": "1853904c798352246f898a531c20ba6c5a035cd5f95829ee2541d336ffb9b038"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2875",
+      "size": 26214400,
+      "sha256": "d0c71d7fdaf908d1bf5f3c4cdf51962e6fc0ebe976d449b51e08cc816cd52b29"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2876",
+      "size": 19660800,
+      "sha256": "6deb9aee15f53250b1344769c26213a363ecc60f0241ab4ba37b61d4fdb6a1c1"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2881",
+      "size": 6553600,
+      "sha256": "f8f64b775d2fb9da3723466c62c26225a54b91f208d15a2c90bc9dcc42f12493"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2882",
+      "size": 26214400,
+      "sha256": "eb0825ccf808c3d142012f8623eb880c85bb9c288d2bcb38e753e2b72c6b5b87"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2883",
+      "size": 26214400,
+      "sha256": "6cc25bb18aaf8cb586f18a947479eedf49049f6b8340e1dd326ae3d6304e9a92"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2884",
+      "size": 19660800,
+      "sha256": "b12da696d25968121084c15926e2561ec376da644153202e4f93c480da02aa29"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2889",
+      "size": 6553600,
+      "sha256": "59cfdf847ee45a9b19a6034d2b570ebac6ecc7bda96f6068c04a42f0ffe1fe52"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2890",
+      "size": 26214400,
+      "sha256": "b5192a50356b3d76bbb1047c5da04590a7e22589de10cba19d61e708bfd159a0"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2891",
+      "size": 26214400,
+      "sha256": "b76f42ee693542464e75728f7fe62ba8b9a68f37886d7924d4d80cb677c3588c"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2892",
+      "size": 19660800,
+      "sha256": "3aaa855a0ebbbbc53372db6d1ff09d5d58d6ec35b9d7e25746f3281f223b7673"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2897",
+      "size": 6553600,
+      "sha256": "31118f2afc4ac9a5a53d05c310ff9ac41382baabe7a793088d7cc3ebed93a93b"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2898",
+      "size": 26214400,
+      "sha256": "8c3e531c4aa4e95b885309dbafc9fd6bccfda80b8a0c18b668473b05c9f405c9"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2899",
+      "size": 26214400,
+      "sha256": "6dc8e01ab65d2eb817581083c45bea65e5bb68956b6cab57b246d6cd74a0367f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2900",
+      "size": 19660800,
+      "sha256": "a1a147bf3d8da187687aaa9e2a9e07d06926b07dd760ca1a12532139db649736"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2905",
+      "size": 6553600,
+      "sha256": "0adfff271e62e05dc1626802f3bb0526d66bae094c01c7b0579a8cbc3a49490c"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2906",
+      "size": 26214400,
+      "sha256": "959b5ee581d91d4c6e09b0c42141dca906806169f98d1fedab19d6227c1bead1"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2907",
+      "size": 26214400,
+      "sha256": "e8cff951aea7a88a8306181edb641e724801af09123c2d2743cf754bd81248f1"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2908",
+      "size": 19660800,
+      "sha256": "302bd53cd57c806cac91e6119a6c301400803bcb324ab48bd8e1a581071adc7b"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2913",
+      "size": 6553600,
+      "sha256": "5a5de664c4a80e67ab73154dbf30d91f94e34d0e8980384d48d88c9175c147a5"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2914",
+      "size": 26214400,
+      "sha256": "eb6ec4eeec3e4b0982df7c8dc0931193fc97ddf7051509d7c77327fe479bcadf"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2915",
+      "size": 26214400,
+      "sha256": "0da830794f1b6f1782e22c63c72a658bf175aa5a3d0f05952cd3c90c8355054f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2916",
+      "size": 19660800,
+      "sha256": "08c7dc8db4151e8e9a07f9df8c12248286f0eefe6ddac4946c66dc0a9107cbb7"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2921",
+      "size": 6553600,
+      "sha256": "e4b9d7701b38eecd7d0b6dfce508e5363a8bc95b86b403d09945f51181befe05"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2922",
+      "size": 26214400,
+      "sha256": "cae28633943ae41892ac96325979d44b28025e9aea1bcfffb73ae727af84d9a2"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2923",
+      "size": 26214400,
+      "sha256": "fbdc79e72c32327ba03f7dcd2c848f5772771f562544224481dfd289c67d9247"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2924",
+      "size": 19660800,
+      "sha256": "5d5ffb1aa1662b005dda2c778647703952fdfd295bebadbbc41fa5b36663e510"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2929",
+      "size": 6553600,
+      "sha256": "7fc30ba2aa1a434eb46a5098c2696a078aea5552dcbdd5afc06647fab5b1d831"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2930",
+      "size": 26214400,
+      "sha256": "0161cd382749a4368e94e4c7f3f5a7a18e87a9b392b5306b4f112ce5edcdd464"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2931",
+      "size": 26214400,
+      "sha256": "c67b1c68a54f93c0d2f98aa6862801520321a2cca84ccadf2220b59e9a6f60f0"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2932",
+      "size": 19660800,
+      "sha256": "c325a7b0aeef0ce44fea3dfb2c3a10d4f617e09d7657a154cfcad9bf241f6dae"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2937",
+      "size": 6553600,
+      "sha256": "019bc31dfc47fbd6d2726b933c90703e6c6bbdc07f89e2abd05319cfb581f9f4"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2938",
+      "size": 26214400,
+      "sha256": "07cb0cfa053f410c07703326daf07f2ee7dde26d930b907c2fa51c384cba5cf0"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2939",
+      "size": 26214400,
+      "sha256": "caba6683d49beb5d5836d9d4aaba1b8fa7da6a631daf167298cedd00d2f4844d"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2940",
+      "size": 19660800,
+      "sha256": "a2e7c892009ed2563544e6f197f2460e660d1d72c348776ba40a99044381152c"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2945",
+      "size": 6553600,
+      "sha256": "54a3ff7c598f106e1d3faa1d19134df08f9f2956dd9627f8aee46e8b3129c91f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2946",
+      "size": 26214400,
+      "sha256": "2876e58456c571b0a5900f751a3b1ae5f350ef74db158504f35cb63fb3309fc6"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2947",
+      "size": 26214400,
+      "sha256": "990900ffbe8f20cb4817f781d6c52e5148a45f3b8149576ee7b716f3301de25e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2948",
+      "size": 19660800,
+      "sha256": "26706426f6ad2c858a255e29a61b9268afd34196bf4ac8e1dcfa668cd539d1ed"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2953",
+      "size": 6553600,
+      "sha256": "90d76a1aef6695fb3be421749034db5583de969eaf4da41e3dafea7e2eae807c"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2954",
+      "size": 26214400,
+      "sha256": "b43234a149e8b986a1d69af290d8bc85a94e16afdc52b90a4d6d6b3df99833d1"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2955",
+      "size": 26214400,
+      "sha256": "22b2f7472d10defaa5b2621dffa15ca41f2cfa7fc070a6f3819db7b160af786a"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2956",
+      "size": 19660800,
+      "sha256": "924b2e243a46e903bcafe764c6270659327079e7300207ec21b44eac976f8b25"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2961",
+      "size": 6553600,
+      "sha256": "e3593318c77f47dab18367b1d839f1d3d6d739e9a0a156c5122e10d91f478e80"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2962",
+      "size": 26214400,
+      "sha256": "eedd1ca78bdecbb556f454acc341cd18b106d950f033597e55dbaf0f63691b68"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2963",
+      "size": 26214400,
+      "sha256": "9efd715ae4699807c593d42cf23a998421647b34c2017250c150320cd3b84f02"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2964",
+      "size": 19660800,
+      "sha256": "07f2a9049eceddba708189738ef8cba6dadfcb4a00d957aae84efad62eb366e1"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2969",
+      "size": 6553600,
+      "sha256": "b397b0e5c0244996473fdbc6cd19ddde7dda1c923b2904b352e259535cb579e9"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2970",
+      "size": 26214400,
+      "sha256": "d4cf1c05435f8258ba7953de9a276c756b6edafb8a20d78a9dab2f749d6c1eff"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2971",
+      "size": 26214400,
+      "sha256": "23108c265092ccd81d9ca05b54b97d3e9482cd01ba3c413dcc257b9159036293"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2972",
+      "size": 19660800,
+      "sha256": "1816591ea3a724cbbb38cd4a768b100b01c710162f26fe6495bf843887292b2f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2977",
+      "size": 6553600,
+      "sha256": "578fafa54cebac68cc17b05629046d3062ce49fcc21b71562ad70b62338fe652"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2978",
+      "size": 26214400,
+      "sha256": "57c39e23d8a4a23a25f7e1f377de05ba058823c66e27e89938953b215d7f7547"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2979",
+      "size": 26214400,
+      "sha256": "fb991c934940b23c2704cd7837ce4c992c0fc4f4d105dfb6cbc2663907c0795f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2980",
+      "size": 19660800,
+      "sha256": "f69fcf02bb178ec267220e4e9ad7a4cdb4cfd3ff6c2a05d09ac5a1ea2f65cc92"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2985",
+      "size": 6553600,
+      "sha256": "44d28ae967be9803232a00d6db77db723d0ef142e7dd01e0d79d2a4f6f18a87f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2986",
+      "size": 26214400,
+      "sha256": "7557230ffd4ce9d312b9efbed0e9bf812a05326abe2a1f1158b25c654734cf1e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2987",
+      "size": 26214400,
+      "sha256": "ec5b58c91172a513a84caba7899da47ae3376f0b38f9ccb78f841cbac7945133"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2988",
+      "size": 19660800,
+      "sha256": "89259c349a4c0b31416ce1794c88f27b3936e08b7fa1945d526038e6ba62c93e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2993",
+      "size": 6553600,
+      "sha256": "c3217d3ed906ac775fd7ddb1fac3c9d72a25026087b56240ad22fedb12589439"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2994",
+      "size": 26214400,
+      "sha256": "788e059c7854e7c4a878b9124787baa486df8b280f5cdca9866b9ae2adcd59b8"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2995",
+      "size": 26214400,
+      "sha256": "851afc03e7773938f80b8dbce877c0eaf179692789b824d1ab07567c22ea6a65"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_2996",
+      "size": 19660800,
+      "sha256": "7c7739b0149bfb64e6a9c46e38eb1ed81370950c3afab10485e70274b7582bf6"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3001",
+      "size": 6553600,
+      "sha256": "f4e8ae49b3b751c86a9ac3de5051f2bd12a891813792f472a3c2fc5065acdc07"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3002",
+      "size": 26214400,
+      "sha256": "d8cc21ef2ce4294368825d1bc6d41e095a5a2627c21b1c34d089f70c1b0ef07e"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3003",
+      "size": 26214400,
+      "sha256": "85ac412ced783008b7f56f287cd1053044cdbd28b4c88f29aa69776428c412ef"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3004",
+      "size": 19660800,
+      "sha256": "017c475979a51d009f3f39a1b16be15664402493a7885ecc0243926e559748b4"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3009",
+      "size": 6553600,
+      "sha256": "4d953dbbd49e274fcad9d7a483643f43b05af05802a3458bea0d1b1cf05cb815"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3010",
+      "size": 26214400,
+      "sha256": "6a21c14a30f046ee2e85fd22643a90cc98198017891b3d3f4083f692d41681d7"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3011",
+      "size": 26214400,
+      "sha256": "c40abf689d4f3945eacf0ff710970aa03051dfc36ac16850ffc47672911c0278"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3012",
+      "size": 19660800,
+      "sha256": "e54bcc5e5628c96bdbf27a0017487a15e7e10df10953eb4850fcdb0100a92258"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3017",
+      "size": 6553600,
+      "sha256": "fdf5b70e63e476e4d8c0297bc11bccbe94a2293ee0391c2c18d3ac76af5dd684"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3018",
+      "size": 26214400,
+      "sha256": "ac21f935015403a8c1b4dc70f9ebef8dd863c74115dde7b4d3c6770ab0ae6597"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3019",
+      "size": 26214400,
+      "sha256": "c4390a3f715504956c49404edba6cb6f58f7b91ce20e1a93fe74db9c271c508f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3020",
+      "size": 19660800,
+      "sha256": "0ed3c8a5c617a44c7275312e8c8534a5dd967cea35478cb758b231339f093a15"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3025",
+      "size": 6553600,
+      "sha256": "04fcbd309a018a73addff9d225be4a655e3d5d388f69cd9b0d683efc96affcca"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3026",
+      "size": 26214400,
+      "sha256": "b926b23065cc441616088bf434642bac9535fd24dd1e97f35174ace26d002701"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3027",
+      "size": 26214400,
+      "sha256": "78f2c33f2ca6fc86aff3e8fb401d6abfc91927064f1850ee3a35557262e11ba5"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3028",
+      "size": 19660800,
+      "sha256": "9d18fc986344587efae2fc4c86fd58f89e7757a35ad99490408ccb0ae2cce649"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3033",
+      "size": 6553600,
+      "sha256": "e933da3fcacda40993958d940f7dfba54130dd7720db02d59a7e0214a45ce3ff"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3034",
+      "size": 26214400,
+      "sha256": "b8cabd2493b98c845f589964c89f257883bfec21153fc4acc6f4b6b019fb2c10"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3035",
+      "size": 26214400,
+      "sha256": "ab73a6f183d689d844d69674d3c0a9e5445e0a119e1d37fcd400ad33ffcc7750"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3036",
+      "size": 19660800,
+      "sha256": "b6443ac27260551f04d16d2d02c9100a487d219e2fe6e112b92bfefbc9323ccb"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3041",
+      "size": 6553600,
+      "sha256": "6f47c91c796d943f28f362080e7897479f2cd8eec598de8b6d4b0ebba3bde596"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3042",
+      "size": 26214400,
+      "sha256": "5a7ed3ce9054015b6e9cca4545ae1d3fc47f7c29ab201d1b396e82da138f4889"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3043",
+      "size": 26214400,
+      "sha256": "0514f4b5867441cd19c33bbdc01b8aff8a0429f4f8f22ff0865b5cd02e139fb3"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3044",
+      "size": 19660800,
+      "sha256": "b4b83ab7f211e71e3ff1d6cfc03334aa77d473464354ba1507b093be202ee6f4"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3049",
+      "size": 6553600,
+      "sha256": "c36ce4232614fafbc576641e935279608c71020b6051640b491f9cccdae34ff2"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3050",
+      "size": 26214400,
+      "sha256": "de97032ef150cb25191002f4ea3f6921900661719b52012a8ab5c1c51ea0dd5f"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3051",
+      "size": 26214400,
+      "sha256": "5428625e8b5f642a29384432f16462615daab7cc2ef364a17f994db0ac5ecdff"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3052",
+      "size": 19660800,
+      "sha256": "efa4492903eb5aff63e90d9f42ad2b0568e94f1f175caf42a335302994bd3e47"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3057",
+      "size": 6553600,
+      "sha256": "050a46a05e3ed3cb4ecaa0d54412d57d8d86e3b214161684e50dec04e1b0be03"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3058",
+      "size": 26214400,
+      "sha256": "23372cc4f8947725380329d26fe3de28412f5c95aa75cb989ba0008e994bfe15"
+    },
+    {
+      "path": "process_checkpoint/pose2d/vitpose_h_wholebody.onnx/onnx__MatMul_3059",
+      "size": 26214400,
+      "sha256": "579f33bc6f6f699df7620f65a26f7691374a0deb2c32778bd5245337b03e0296"
+    }
+  ],
+  "generation_total_bytes": 54100856515,
+  "preprocess_total_bytes": 2611022238,
+  "download_note": "All weights downloaded onto disposable Pod or locally when explicitly requested. Never in public container image."
+}
