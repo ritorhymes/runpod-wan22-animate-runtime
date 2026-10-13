@@ -230,9 +230,22 @@ def smoke(*, gpu: bool = False):
     if not Path("/start.sh").is_file() and gpu:
         raise RuntimeErrorContract("Base image is missing RunPod /start.sh")
     sys.path.insert(0, str(UPSTREAM))
-    from wan.configs import WAN_CONFIGS, SUPPORTED_SIZES
-    from wan.animate import WanAnimate
-    from wan.modules.animate.preprocess.pose2d import Pose2d
+    # The official Wan source evaluates torch.cuda.current_device() as a
+    # default argument while importing wan.modules.t5.T5EncoderModel. GitHub
+    # Actions image builders have no NVIDIA driver. Patch ONLY that import-
+    # time default to device 0 for a CPU import smoke; real inference still
+    # uses actual torch.cuda.current_device on an attached GPU.
+    if not gpu and not torch.cuda.is_available():
+        from unittest.mock import patch
+        print("CPU_IMPORT_ONLY: temporarily stub CUDA device index during import", flush=True)
+        with patch.object(torch.cuda, "current_device", return_value=0):
+            from wan.configs import WAN_CONFIGS, SUPPORTED_SIZES
+            from wan.animate import WanAnimate
+            from wan.modules.animate.preprocess.pose2d import Pose2d
+    else:
+        from wan.configs import WAN_CONFIGS, SUPPORTED_SIZES
+        from wan.animate import WanAnimate
+        from wan.modules.animate.preprocess.pose2d import Pose2d
     assert "animate-14B" in WAN_CONFIGS
     assert WAN_CONFIGS["animate-14B"].sample_steps == 20
     assert WAN_CONFIGS["animate-14B"].sample_fps == 30
