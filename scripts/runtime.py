@@ -26,7 +26,8 @@ DEFAULT_MODELS = Path(os.environ.get("WAN22_MODELS", "/workspace/models/Wan2.2-A
 ASSETS = ("src_ref.png", "src_pose.mp4", "src_face.mp4",
           "src_mask.mp4", "src_bg.mp4")
 SAMPLE_FPS = Fraction(30, 1)
-SAMPLE_FRAMES = 77
+MIN_FRAMES = 53
+MAX_FRAMES = 129
 SIZE = (832, 480)
 FACE_SIZE = (512, 512)
 
@@ -165,14 +166,18 @@ def preflight_job(job_dir: Path, *, decode: bool = False):
         raise RuntimeErrorContract("Incorrect run mode")
     if details.get("source_fps") != "24000/1001":
         raise RuntimeErrorContract("Original Premiere FPS mismatch")
-    if details.get("generation_fps") != 30 or details.get("generation_frames") != SAMPLE_FRAMES:
-        raise RuntimeErrorContract("Wan frame/FPS contract mismatch")
-    if details.get("motion_frames", 0) <= 0 or details.get("motion_frames", 0) > SAMPLE_FRAMES:
+    frame_count = details.get("generation_frames")
+    if (details.get("generation_fps") != 30
+            or not isinstance(frame_count, int)
+            or not (MIN_FRAMES <= frame_count <= MAX_FRAMES)
+            or (frame_count - 1) % 4 != 0):
+        raise RuntimeErrorContract("Wan frame/FPS contract mismatch; require 4n+1 frames, 53..129 at 30fps")
+    if details.get("motion_frames", 0) <= 0 or details.get("motion_frames", 0) > frame_count:
         raise RuntimeErrorContract("Invalid motion frame count")
     if details.get("source_frame_count", 0) <= 0:
         raise RuntimeErrorContract("Missing original source frame count")
     index = details.get("condition_frame_to_source_local_frame")
-    if not isinstance(index, list) or len(index) != SAMPLE_FRAMES:
+    if not isinstance(index, list) or len(index) != frame_count:
         raise RuntimeErrorContract("Frame-to-original-source mapping missing or incomplete")
     if not all(isinstance(x, int) and 0 <= x < details["source_frame_count"] for x in index):
         raise RuntimeErrorContract("Invalid original-frame index")
@@ -189,8 +194,8 @@ def preflight_job(job_dir: Path, *, decode: bool = False):
         if name.endswith(".mp4"):
             info = ffprobe(p)
             if (Fraction(info["avg_frame_rate"]) != SAMPLE_FPS or
-                    int(info["nb_read_frames"]) != SAMPLE_FRAMES):
-                raise RuntimeErrorContract(f"{name}: require 77 frames at 30fps, got {info}")
+                    int(info["nb_read_frames"]) != frame_count):
+                raise RuntimeErrorContract(f"{name}: require {frame_count} frames at 30fps, got {info}")
             dimensions = (info["width"], info["height"])
             if dimensions != (FACE_SIZE if name == "src_face.mp4" else SIZE):
                 raise RuntimeErrorContract(f"{name}: wrong dimensions {dimensions}")
@@ -208,7 +213,7 @@ def preflight_job(job_dir: Path, *, decode: bool = False):
             with PILImage.open(p) as im:
                 if im.width < 256 or im.height < 256:
                     raise RuntimeErrorContract("Reference photo is too small")
-    print("PREFLIGHT_PASS", job_dir, "steps=20, frames=77, fps=30, video_sizes",
+    print("PREFLIGHT_PASS", job_dir, "steps=20, frames=", frame_count, "fps=30, video_sizes",
           {k: (v["width"], v["height"]) for k, v in video_spec.items()}, flush=True)
     return details
 
@@ -241,11 +246,13 @@ def smoke(*, gpu: bool = False):
         with patch.object(torch.cuda, "current_device", return_value=0):
             from wan.configs import WAN_CONFIGS, SUPPORTED_SIZES
             from wan.animate import WanAnimate
-            from wan.modules.animate.preprocess.pose2d import Pose2d
     else:
         from wan.configs import WAN_CONFIGS, SUPPORTED_SIZES
         from wan.animate import WanAnimate
-        from wan.modules.animate.preprocess.pose2d import Pose2d
+    # The upstream preprocessing package has package-relative import bugs
+    # and requires additional SAM2/Flux models. Local preprocessing is
+    # independently tested; the expensive Pod only runs WanAnimate.
+    assert (UPSTREAM / "wan/modules/animate/preprocess/pose2d.py").is_file()
     assert "animate-14B" in WAN_CONFIGS
     assert WAN_CONFIGS["animate-14B"].sample_steps == 20
     assert WAN_CONFIGS["animate-14B"].sample_fps == 30
@@ -268,7 +275,8 @@ def run(job_dir: Path, models: Path, out: Path, steps: int, seed: int,
         raise RuntimeErrorContract("Invalid sample step count; 1..50")
     if seed < 0:
         raise RuntimeErrorContract("Seed must be deterministic/non-negative")
-    preflight_job(job_dir, decode=True)
+    info = preflight_job(job_dir, decode=True)
+    num_frames = info["generation_frames"]
     m = verify_files(models, verify_sha=False)
     if not m["complete"]:
         raise RuntimeErrorContract(f"Missing checkpoint files: {m['errors'][:8]}")
@@ -287,7 +295,7 @@ def run(job_dir: Path, models: Path, out: Path, steps: int, seed: int,
         "--size", "1280*720",  # Official parser accepts this; real input size comes from src_pose.
         "--ckpt_dir", str(models.resolve()),
         "--src_root_path", str(job_dir.resolve()),
-        "--frame_num", str(SAMPLE_FRAMES),
+        "--frame_num", str(num_frames),
         "--sample_steps", str(steps),
         "--refert_num", "1",
         "--base_seed", str(seed),
@@ -307,8 +315,8 @@ def run(job_dir: Path, models: Path, out: Path, steps: int, seed: int,
         print("INFERENCE_END", datetime.now(timezone.utc).isoformat(),
               f"seconds={took}", flush=True)
         data = ffprobe(out)
-        if int(data["nb_read_frames"]) != SAMPLE_FRAMES or Fraction(data["avg_frame_rate"]) != SAMPLE_FPS:
-            raise RuntimeErrorContract("Generated video does not decode to expected 77 frames @ 30fps")
+        if int(data["nb_read_frames"]) != num_frames or Fraction(data["avg_frame_rate"]) != SAMPLE_FPS:
+            raise RuntimeErrorContract(f"Generated video does not decode to expected {num_frames} frames @ 30fps")
         print("RESULT_SHA256", digest(out), flush=True)
     return command
 

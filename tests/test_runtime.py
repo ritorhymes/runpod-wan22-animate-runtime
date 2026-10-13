@@ -118,6 +118,30 @@ class ConditionContractTests(unittest.TestCase):
             with self.assertRaisesRegex(mod.RuntimeErrorContract, "77 frames"):
                 mod.preflight_job(self.p)
 
+    def test_shortened_53_frame_input_is_accepted(self):
+        self.info["generation_frames"] = 53
+        self.info["motion_frames"] = 51
+        self.info["condition_frame_to_source_local_frame"] = (
+            [min(39, round(i * 24000 / 30030)) for i in range(53)]
+        )
+        (self.p / "job.json").write_text(json.dumps(self.info))
+        def fake_probe(path):
+            result = self.probe.copy()
+            result["nb_read_frames"] = "53"
+            if path.name == "src_face.mp4":
+                result["width"] = 512
+                result["height"] = 512
+            return result
+        with patch.object(mod, "ffprobe", side_effect=fake_probe):
+            details = mod.preflight_job(self.p)
+        self.assertEqual(details["generation_frames"], 53)
+        with patch.object(mod, "preflight_job", return_value=details), \
+             patch.object(mod, "verify_files", return_value={"complete": True}):
+            with contextlib.redirect_stdout(io.StringIO()):
+                command = mod.run(self.p, self.p, self.p / "output.mp4", 20, 42,
+                                  actually_run=False)
+        self.assertEqual(command[command.index("--frame_num") + 1], "53")
+
     def test_audio_mapping_must_be_monotonic_and_original_duration_retained(self):
         self.info["condition_frame_to_source_local_frame"][44] = 0
         (self.p / "job.json").write_text(json.dumps(self.info))
@@ -125,7 +149,7 @@ class ConditionContractTests(unittest.TestCase):
             mod.preflight_job(self.p)
 
     def test_cpu_safe_infer_dryrun_never_calls_gpu(self):
-        with patch.object(mod, "preflight_job"), \
+        with patch.object(mod, "preflight_job", return_value={"generation_frames": 77}), \
              patch.object(mod, "verify_files", return_value={"complete": True}), \
              patch.object(mod, "smoke", side_effect=AssertionError("smoke called")), \
              patch.object(mod.subprocess, "run", side_effect=AssertionError("subprocess started")):
