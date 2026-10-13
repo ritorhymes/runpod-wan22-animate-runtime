@@ -1,0 +1,17 @@
+.git
+.github
+__pycache__
+*.pyc
+*.mp4
+*.png
+*.jpg
+*.jpeg
+*.safetensors
+*.ckpt
+*.pth
+*.onnx
+*.bin
+.env*
+input
+output
+weights

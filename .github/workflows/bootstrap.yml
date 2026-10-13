@@ -1,0 +1,27 @@
+name: Bootstrap public GHCR package (tiny image)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile.bootstrap
+          push: true
+          provenance: false
+          tags: ghcr.io/${{ github.repository }}:bootstrap-only
+          labels: org.opencontainers.image.source=https://github.com/${{ github.repository }}
