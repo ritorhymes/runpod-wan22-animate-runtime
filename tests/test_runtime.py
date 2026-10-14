@@ -163,8 +163,37 @@ class ConditionContractTests(unittest.TestCase):
         self.assertIn("--replace_flag", argv)
         self.assertIn("--use_relighting_lora", argv)
         self.assertIn("--convert_model_dtype", argv)
-        self.assertIn("--t5_cpu", argv)
+        self.assertNotIn("--t5_cpu", argv)  # Safe default; GPU encoder.
         self.assertEqual(argv[argv.index("--frame_num") + 1], "77")
+
+    def test_t5_placement_is_portable_and_fail_closed(self):
+        minimum = mod.GPU_T5_MIN_VRAM_BYTES
+        self.assertEqual(mod.resolve_t5_placement("auto", dry_run=True), "gpu")
+        self.assertEqual(mod.resolve_t5_placement("gpu", dry_run=True), "gpu")
+        self.assertEqual(mod.resolve_t5_placement("auto", gpu_total_bytes=minimum), "gpu")
+        self.assertEqual(mod.resolve_t5_placement("gpu", gpu_total_bytes=minimum + 1), "gpu")
+        with self.assertRaisesRegex(mod.RuntimeErrorContract, "80GB-class GPU"):
+            mod.resolve_t5_placement("auto", gpu_total_bytes=24 * 1024**3)
+        with self.assertRaisesRegex(mod.RuntimeErrorContract, "80GB-class GPU"):
+            mod.resolve_t5_placement("gpu", gpu_total_bytes=minimum - 1)
+        self.assertEqual(mod.resolve_t5_placement("cpu"), "cpu")
+        with self.assertRaises(ValueError):
+            mod.resolve_t5_placement("unspecified", dry_run=True)
+
+    def test_explicit_cpu_override_is_only_way_to_emit_t5_cpu(self):
+        with patch.object(mod, "preflight_job", return_value={"generation_frames": 77}), \
+             patch.object(mod, "verify_files", return_value={"complete": True}), \
+             patch.object(mod, "smoke", side_effect=AssertionError("smoke called")), \
+             patch.object(mod.subprocess, "run", side_effect=AssertionError("subprocess started")):
+            with contextlib.redirect_stdout(io.StringIO()):
+                gpu_command = mod.run(self.p, self.p, self.p / "result.mp4",
+                                      20, 42, actually_run=False, t5_placement="gpu")
+                cpu_command = mod.run(self.p, self.p, self.p / "result.mp4",
+                                      20, 42, actually_run=False, t5_placement="cpu")
+        self.assertNotIn("--t5_cpu", gpu_command)
+        self.assertIn("--t5_cpu", cpu_command)
+        self.assertEqual([x for x in gpu_command if x != "--t5_cpu"],
+                         [x for x in cpu_command if x != "--t5_cpu"])
 
 
 if __name__ == "__main__":

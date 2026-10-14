@@ -30,6 +30,10 @@ MIN_FRAMES = 53
 MAX_FRAMES = 129
 SIZE = (832, 480)
 FACE_SIZE = (512, 512)
+# The official full-precision Animate runtime requires an 80GB-class GPU.
+# On the verified A100, running BF16 T5 on the older EPYC CPU stalled before
+# denoising. Keep the normal, official GPU T5 path; never silently fall back.
+GPU_T5_MIN_VRAM_BYTES = 75 * (1024**3)
 
 
 class RuntimeErrorContract(RuntimeError):
@@ -269,8 +273,27 @@ def smoke(*, gpu: bool = False):
     print("SMOKE_PASS", flush=True)
 
 
+def resolve_t5_placement(requested: str, *, gpu_total_bytes: int | None = None,
+                         dry_run: bool = False) -> str:
+    """Use the official GPU T5 path by default, with no hidden CPU fallback.
+
+    Dry runs are deliberately CPU-only and do not query CUDA. Actual runs
+    require a GPU size check; small GPUs fail before any generation starts.
+    """
+    if requested not in ("auto", "gpu", "cpu"):
+        raise ValueError("T5 placement must be auto, gpu or cpu")
+    if requested == "cpu":
+        return "cpu"  # Explicit opt-in only (can be very slow for BF16 on CPU).
+    if not dry_run and (gpu_total_bytes is None or
+                        gpu_total_bytes < GPU_T5_MIN_VRAM_BYTES):
+        raise RuntimeErrorContract(
+            "GPU T5 requires a tested 80GB-class GPU; refusing a silent CPU fallback"
+        )
+    return "gpu"
+
+
 def run(job_dir: Path, models: Path, out: Path, steps: int, seed: int,
-        *, actually_run: bool = False) -> list[str]:
+        *, actually_run: bool = False, t5_placement: str = "auto") -> list[str]:
     if steps < 1 or steps > 50:
         raise RuntimeErrorContract("Invalid sample step count; 1..50")
     if seed < 0:
@@ -282,8 +305,17 @@ def run(job_dir: Path, models: Path, out: Path, steps: int, seed: int,
         raise RuntimeErrorContract(f"Missing checkpoint files: {m['errors'][:8]}")
     if not actually_run:
         print("DRY_RUN_ONLY: no GPU inference or writing will occur", flush=True)
-    if actually_run:
+        placement = resolve_t5_placement(t5_placement, dry_run=True)
+    else:
         smoke(gpu=True)
+        import torch
+        placement = resolve_t5_placement(
+            t5_placement, gpu_total_bytes=torch.cuda.get_device_properties(0).total_memory,
+        )
+    print(f"WAN_T5_PLACEMENT requested={t5_placement} selected={placement}", flush=True)
+    if placement == "cpu":
+        print("WARNING: Explicit CPU BF16 T5 may stall on CPUs without BF16 acceleration",
+              flush=True)
     out = out.resolve()
     if actually_run:
         if out.exists():
@@ -301,11 +333,12 @@ def run(job_dir: Path, models: Path, out: Path, steps: int, seed: int,
         "--base_seed", str(seed),
         "--offload_model", "True",
         "--convert_model_dtype",
-        "--t5_cpu",
         "--replace_flag",
         "--use_relighting_lora",
         "--save_file", str(out),
     ]
+    if placement == "cpu":
+        command.insert(command.index("--replace_flag"), "--t5_cpu")
     print("OFFICIAL_COMMAND", " ".join(command), flush=True)
     if actually_run:
         print("INFERENCE_START", datetime.now(timezone.utc).isoformat(), flush=True)
@@ -345,6 +378,9 @@ def main():
     infer.add_argument("--output", type=Path, required=True)
     infer.add_argument("--steps", type=int, default=20)
     infer.add_argument("--seed", type=int, default=42)
+    infer.add_argument("--t5-placement", choices=("auto", "gpu", "cpu"), default="auto",
+                       help="auto (default) uses GPU T5 on an 80GB-class GPU; "
+                            "cpu must be explicitly requested and may be very slow")
     infer.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
     try:
@@ -366,7 +402,7 @@ def main():
             preflight_job(args.job_dir, decode=args.decode)
         elif args.command == "infer":
             run(args.job_dir, args.models, args.output, args.steps, args.seed,
-                actually_run=not args.dry_run)
+                actually_run=not args.dry_run, t5_placement=args.t5_placement)
         return 0
     except (RuntimeErrorContract, subprocess.CalledProcessError, OSError,
             ValueError, AssertionError) as error:

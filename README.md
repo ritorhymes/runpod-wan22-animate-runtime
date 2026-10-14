@@ -25,6 +25,8 @@ The base image inherits RunPod's startup command, SSH and notebook services. No 
     wan22-runtime preflight --job-dir /workspace/wan22/jobs/s01e03-clip03-shot19 --decode
     wan22-runtime infer --job-dir /workspace/wan22/jobs/s01e03-clip03-shot19 --output /workspace/wan22/output/s01e03-clip03-shot19-wan22-replaced.mp4 --steps 20 --seed 42
 
+**T5 placement:** `infer` defaults to `--t5-placement auto`, which selects the official GPU T5 path on a tested 80GB-class GPU. There is **no automatic CPU fallback**: an undersized GPU fails preflight. Explicit `--t5-placement gpu` also chooses GPU; `--t5-placement cpu` is available only as an intentional override and may take a very long time on CPUs lacking native BF16 acceleration. The BF16 weights, reference conditioning, seed, and diffusion settings are unchanged. Dry-run planning does not access CUDA. This behavior was verified on an A100 80GB after CPU T5 stalled on an AMD EPYC 7742 host.
+
 The explicit model download fetches only the pinned official generation files (54,100,856,515 bytes) onto **disposable Pod disk**. It never provisions network volumes. The generated video is returned to the local controller.
 
 The five official conditioning assets are src_ref.png, src_face.mp4 (512x512), src_pose.mp4, src_mask.mp4 and src_bg.mp4 (832x480, same original-frame mapping). The private controller generates them locally from the original Premiere cuts, reference image and user-approved SAM2 masks. Do not commit that private content.
@@ -35,14 +37,14 @@ The five official conditioning assets are src_ref.png, src_face.mp4 (512x512), s
 - Converted to 53 Wan frames at 30 FPS (4n+1), preserving the original source motion and holding the last frame for minimal padding.
 - Official sample count: 20 diffusion steps, one reference, fixed seed 42.
 - The user-selected new reference photo is used, not an older one.
-- 53-frame Wan inference is compatible with the official generator's 4n+1 shape rule, but not yet GPU-benchmarked. The first paid run remains an acceptance test, not a guaranteed success.
+- The first 53-frame paid acceptance run completed on an A100 80GB using GPU T5, with the approved reference and official BF16 inference. Larger conditioning windows still need per-shot memory and output checks.
 
 ## Safety
 
 - No Pod creation functionality exists in this public repository.
 - Paid GPU launch REQUIRES separate, explicit user authorization.
 - Use only a single disposable Pod with no network volumes or permanent storage.
-- Generate one first-test shot, retrieve its result and logs, then stop for user inspection. Do not automatically start other shots.
+- Obtain authorization for the requested shot/batch, preserve logs and input integrity, and never expand the authorized scope. The initial Shot 19 acceptance is complete; the separately authorized ten-shot batch runs through the private controller.
 - User decides when to delete the Pod. The private controller's rgpu kill command is the available emergency kill switch.
 
 ## Tests
@@ -54,4 +56,4 @@ These commands do not download weights, start a Pod or charge money.
 
 ## Known limitations
 
-Official Wan imports call torch.cuda.current_device at module-import time. CPU GitHub Actions smoke tests temporarily substitute the device index *only during import*. Real GPU checks will run without that substitution on the paid Pod. The pose output for a head-only actor may be sparse, and video generation may alter surrounding pixels despite exact conditioning masks. The first paid result must be reviewed.
+Official Wan imports call torch.cuda.current_device at module-import time. CPU GitHub Actions smoke tests temporarily substitute the device index *only during import*. Real GPU checks will run without that substitution on the paid Pod. The pose output for a head-only actor may be sparse, and video generation may alter surrounding pixels despite exact conditioning masks. Each paid result should be reviewed. GPU T5 memory headroom for 80GB GPUs may be insufficient for longer jobs; abort rather than silently lowering model precision.
